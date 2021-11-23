@@ -48,6 +48,8 @@ class RNCallKeep {
     return this._setupIOS(options.ios);
   };
 
+  setSettings = (settings) => RNCallKeepModule.setSettings(settings[isIOS ? 'ios' : 'android']);
+
   registerPhoneAccount = (options) => {
     if (isIOS) {
       return;
@@ -324,7 +326,7 @@ class RNCallKeep {
           },
           { text: options.okButton, onPress: () => resolve(true) },
         ],
-        { cancelable: true }
+        { cancelable: true },
       );
     });
 
@@ -337,10 +339,11 @@ class RNCallKeep {
   }
 
   getInitialEvents() {
-    if (isIOS) {
-      return RNCallKeepModule.getInitialEvents()
-    }
-    return Promise.resolve([])
+    return RNCallKeepModule.getInitialEvents();
+  }
+
+  clearInitialEvents() {
+    return RNCallKeepModule.clearInitialEvents();
   }
 }
 

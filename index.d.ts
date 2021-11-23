@@ -70,6 +70,8 @@ declare module 'react-native-callkeep' {
   export default class RNCallKeep {
     static getInitialEvents(): Promise<Array<Object>>
 
+    static clearInitialEvents(): void
+
     static addEventListener(type: Events, handler: (args: any) => void): void
 
     static removeEventListener(type: Events): void
@@ -133,6 +135,8 @@ declare module 'react-native-callkeep' {
     static endAllCalls(): void
 
     static setReachable(): void
+
+    static setSettings(settings: Object): void;
 
     /**
      * @description isCallActive method is available only on iOS.
